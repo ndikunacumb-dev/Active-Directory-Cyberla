@@ -1,0 +1,21 @@
+
+	group_creation.ps1
+New-ADGroup -Name "IT-Team" `
+-GroupScope Global `
+-Path "OU=IT,DC=mondomaine,DC=local"
+	firewall_status.ps1
+Get-NetFirewallProfile
+ check_failed_logins.ps1
+Get-EventLog -LogName Security -InstanceId 4625
+enable_audit_policy.ps1
+auditpol /set /category:"Logon/Logoff" /success:enable /failure:enable
+	nmap_scan.txt
+nmap -sS -sV 192.168.1.0/24
+	aggressive_scan.txt
+nmap -A 192.168.1.50
+	smb_enumeration.txt
+nmap --script smb-enum-shares 192.168.1.50
+	netstat_check.txt
+netstat -ano
+	ipconfig_all.txt
+ipconfig /all
